@@ -53,20 +53,18 @@ function getAllUsers(users) {
 }
 
 $( document ).ready(function() {
-	var users = ["ESL_SC2", "OgamingSC2", "cretetion", "freecodecamp", "storbeck", "habathcx", "RobotCaleb", "noobs2ninjas", "brunofin", "comster404"]
+	var users = ["ESL_SC2", "FreeCodeCamp", "test_channel"]
 	getAllUsers(users);
-	
-	$("#search-btn").click(function() {
-		if ($("#search").val() !== "") {
-			getStreamData($("#search").val());
-		}
-	});
 	
 	$("#all-btn").click(function() {
 		getAllUsers(users);
 	});
 
-	$("#clear-btn").click(function() {
-		$("#results").empty();
+	$("#online-btn").click(function() {
 	});
+
+	$("#offline-btn").click(function() {
+	});
+
+
 });

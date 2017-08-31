@@ -1,59 +1,46 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-	<!-- Setting metadata -->
-	<meta charset="utf-8">
-	<title>TwitchTV App</title>
-	<meta name="description" content="View who is currently online on TwitchTV.">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="author" content="Victor Olechow">
-	<!-- Latest compiled and minified CSS -->
-	<link rel="stylesheet" href="bootstrap.min.css">
-  	<link rel="stylesheet" href="style.css">
+  <!-- Setting metadata -->
+  <meta charset="utf-8">
+  <title>TwitchTV App</title>
+  <meta name="description" content="View who is currently online on TwitchTV.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Victor Olechow">
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+  <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
+  <div class="container">
+  
+    <div class="row">
+      <div class="col-sm-8 col-sm-offset-2">
+        <h1 id="title">TwitchTV App</h1>
+        <br>
+        <br>
 
-  	<div class="container">
-		<div class="row">
-    	<div class="col-sm-8 col-sm-offset-2">
-		<h1 id="title">TwitchTV App</h1>
-		<br>
-		<br>
-			<form class="form-inline">
-				<div class="form-group">
-					<input class="form-control" placeholder="Search Channels" id="search">
-					<button id="search-btn" class="btn btn-default">Search</button>
-					<button id="clear-btn" class="btn btn-default">Clear</button>
-				</div>
-			</form>
-		<br>
+        <form class="form-inline">
+          <div class="form-group">
+            <button id="all-btn" class="btn btn-default">All</button>
+            <button id="online-btn" class="btn btn-default">Online</button>
+            <button id="offline-btn" class="btn btn-default">Offline</button>
+          </div>
+        </form>
+        <br>
 
-			<form class="form-inline">
-				<div class="form-group">
-					<button id="all-btn" class="btn btn-default">All</button>
-					<button id="online-btn" class="btn btn-default">Online</button>
-					<button id="offline-btn" class="btn btn-default">Offline</button>
-				</div>
-			</form>
-		<br>
-		</div>
-			<div id="results"></div>
-		</div>
-	</div>
+      </div>
+      <div id="results"></div>
+    </div>
 
-
-		<br>
-		<br>
-	<footer class="footer">
-		<div class="container">
-			<p>Victor Olechow &#169; 2017. All Rights Reversed</p>
-		</div>
-	</footer>
-
-
-	<!-- Latest compiled and minified JavaScript -->
-	<script type="text/javascript" src="jquery.min.js"></script>
-	<script type="text/javascript" src="bootstrap.min.js"></script>
-	<script type="text/javascript" src="script.js"></script>
-	<scritp type="text/javascript" src="mustache.js"></script>
+  </div>
 </body>
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="script.js"></script>
+
+</html>
