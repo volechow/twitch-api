@@ -2,27 +2,14 @@ function getStreamData(user) {
 	$.getJSON(
 		"https://wind-bow.glitch.me/twitch-api/streams/"+user,
 		function(data) {
-			var status_div;
+			var status;
 			if (Boolean(data.stream)) {
-				status_div = '<div class="col-sm-1 col-xs-2" class="status online" style="color:green;" id="'+user+'-status">online</div>';
+				status = "online";
 			} else {
-				status_div = '<div class="col-sm-1 col-xs-2" class="status offline" style="color:red;" id="'+user+'-status">offline</div>'
+				status = "offline";
 			}
-			$("#results").append(
-				'<div class="col-xs-12">'
-				+'<a href="https://www.twitch.tv/'+user+'">'
-				+'<div class="result col-xs-12" id="'+user+'">'
-				+'<div class="row">'
-				+ status_div
-				+'<div class="col-sm-1 col-xs-3" class="logo"><img class="img-responsive" id="'+user+'-logo"></div>'
-				+'<div class="col-sm-10 col-xs-7" id="'+user+'-content">'
-				+'</div>'
-				+'</div>'
-				+'</div>'
-				+'</a>'
-				+'</div>'
-			);
-			getChannelData(user);
+			$("#"+user+"-status").text(status);
+      $("#"+user).addClass(status);
 		} 
 	);
 }
@@ -33,37 +20,54 @@ function getChannelData(user) {
 		function(data) {
 			if (data.error) {
 				$("#"+user+"-logo").attr("src", "not-found.jpeg");
-				$("#"+user+"-status").removeAttr("style");
-				$("#"+user+"-status").text("not found");
+        $("#"+user+"-status").text("not found");
+        $("#"+user).addClass("not-found");
 			} else {
 				$("#"+user+"-logo").attr("src", data.logo);
-				$("#"+user+"-content").html("\
-					<p>"+data.display_name+"</p>\
-					<p>"+data.status+"</p>");
+				$("#"+user+"-content").text(data.status);
 			}
 		}
+	);
+}
+
+function appendUser(user) {
+	$("#results").append(
+		'<div class="result" id="'+user+'">'
+			+'<a href="https://www.twitch.tv/'+user+'">'+user+"</a>"
+      +'<div id="'+user+'-status">Not Found</div>'
+			+'<img class="img-responsive" id="'+user+'-logo" src="not-found.jpeg">'
+			+'<div id="'+user+'-content">Placeholder</div>'
+		+'</div>'
 	);
 }
 
 function getAllUsers(users) {
 	$("#results").empty();
 	for (var i = 0; i < users.length; i++) {
-		getStreamData(users[i]);
-	}
+		appendUser(users[i]);
+    getStreamData(users[i]);
+    getChannelData(users[i]);
+  }
 }
 
 $( document ).ready(function() {
-	var users = ["ESL_SC2", "FreeCodeCamp", "test_channel"]
+	var users = ["ESL_SC2", "OgamingSC2", "cretetion", "freecodecamp", "storbeck", "habathcx", "RobotCaleb", "noobs2ninjas"]
 	getAllUsers(users);
 	
 	$("#all-btn").click(function() {
-		getAllUsers(users);
+    getAllUsers(users);
 	});
 
 	$("#online-btn").click(function() {
+    $(".offline").hide();
+    $(".not-found").hide();
+    $(".online").show();
 	});
 
 	$("#offline-btn").click(function() {
+    $(".online").hide();
+    $(".not-found").hide();
+    $(".offline").show();
 	});
 
 
