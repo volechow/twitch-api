@@ -55,7 +55,7 @@ $( document ).ready(function() {
 	getAllUsers(users);
 	
 	$("#all-btn").click(function() {
-    getAllUsers(users);
+    $(".result").show();
 	});
 
 	$("#online-btn").click(function() {

@@ -2,10 +2,6 @@
 	border:solid 1px;
 }
 
-.result:hover {
-	background-color: gray;
-}
-
 .img-responsive {
 	border-radius:50%;
 	max-height:65px;
